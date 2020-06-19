@@ -26,10 +26,6 @@ namespace WindowsFormsApp1
             videoDevicesList = new FilterInfoCollection(FilterCategory.VideoInputDevice);
             foreach (FilterInfo videoDevice in videoDevicesList)
             {
-                //MessageBox.Show(videoDevice.Name);
-                //if (videoDevice.Name != "")
-                //{ comboBox1.Items.Add(videoDevice.Name); }
-
                 comboBox1.Items.Add(videoDevice.Name);
             }
         }
@@ -58,27 +54,12 @@ namespace WindowsFormsApp1
             pictureBox1.Image = bitmap;
         }
 
-        private void Form1_Load(object sender, EventArgs e)
-        {
-            //Webcams = new FilterInfoCollection(FilterCategory.VideoInputDevice);
-            //if (Webcams.Count > 0)  // The quantity of WebCam must be more than 0.
-            //{
-            //    button1.Enabled = true;
-            //    Cam = new VideoCaptureDevice(Webcams[0].MonikerString);
-            //    Cam.NewFrame += new NewFrameEventHandler(Cam_NewFrame1);
-            //}
-            //else
-            //{
-            //    button1.Enabled = false;
-            //    MessageBox.Show("No video input device is connected.");
-            //}
-        }
 
-        private void Cam_NewFrame1(object sender, NewFrameEventArgs eventArgs)
-        {
-            //throw new NotImplementedException();
-            pictureBox1.Image = (Bitmap)eventArgs.Frame.Clone();
-        }
+        //private void Cam_NewFrame1(object sender, NewFrameEventArgs eventArgs)
+        //{
+        //    //throw new NotImplementedException();
+        //    pictureBox1.Image = (Bitmap)eventArgs.Frame.Clone();
+        //}
 
         private void Form1_FormClosed(object sender, FormClosedEventArgs e)
         {
@@ -94,6 +75,13 @@ namespace WindowsFormsApp1
         private void button2_Click(object sender, EventArgs e)
         {
             Cam.Stop();
+            this.Close();
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            Form2 f = new Form2();
+            f.ShowDialog(this);
             this.Close();
         }
     }
